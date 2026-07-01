@@ -1,0 +1,193 @@
+/*
+ * MORANT803 Design Tokens (--pw-)
+ * Built by Anointed Coder. Concept A "Electric Prediction Market".
+ * Brand ramp regenerated from primary lime #C6FF3D. Accent = mint #16E0A3.
+ * Colors are space-separated RGB channels so Tailwind opacity modifiers work.
+ */
+
+/* ============================================================
+   TIER 1 — PRIMITIVES
+   ============================================================ */
+:root {
+  /* Brand ramp — electric lime, base #C6FF3D at 500 */
+  --pw-brand-50: 250 255 236;
+  --pw-brand-100: 244 255 220;
+  --pw-brand-200: 235 255 190;
+  --pw-brand-300: 224 255 150;
+  --pw-brand-400: 210 255 110;
+  --pw-brand-500: 198 255 61;
+  --pw-brand-600: 168 217 52;
+  --pw-brand-700: 143 184 44;
+  --pw-brand-800: 115 148 35;
+  --pw-brand-900: 89 115 27;
+
+  /* Accent ramp — mint #16E0A3 */
+  --pw-accent-300: 90 240 197;
+  --pw-accent-400: 34 224 170;
+  --pw-accent-500: 22 224 163;
+  --pw-accent-600: 15 185 133;
+
+  /* Neutral ramp — near-black canvas tuned toward Concept A */
+  --pw-neutral-0: 255 255 255;
+  --pw-neutral-50: 241 243 245;
+  --pw-neutral-100: 224 227 231;
+  --pw-neutral-200: 197 201 208;
+  --pw-neutral-300: 160 166 176;
+  --pw-neutral-400: 122 128 139;
+  --pw-neutral-500: 96 102 113;
+  --pw-neutral-600: 68 74 84;
+  --pw-neutral-700: 44 50 60;
+  --pw-neutral-800: 28 32 39;
+  --pw-neutral-900: 20 23 28;
+  --pw-neutral-950: 14 16 19;
+  --pw-neutral-1000: 10 11 13;
+
+  /* Status ramps */
+  --pw-success-50: 236 253 245;
+  --pw-success-400: 52 211 153;
+  --pw-success-500: 22 224 163;
+  --pw-success-600: 5 150 105;
+  --pw-danger-50: 254 242 242;
+  --pw-danger-400: 255 120 130;
+  --pw-danger-500: 255 92 104;
+  --pw-danger-600: 220 38 38;
+  --pw-warning-50: 255 251 235;
+  --pw-warning-400: 255 210 110;
+  --pw-warning-500: 255 194 75;
+  --pw-warning-600: 217 119 6;
+
+  /* Radius */
+  --pw-radius-sm: 0.6rem;
+  --pw-radius-md: 0.9rem;
+  --pw-radius-lg: 1.25rem;
+  --pw-radius-xl: 1.6rem;
+  --pw-radius-2xl: 2rem;
+  --pw-radius-3xl: 2.6rem;
+  --pw-radius-full: 9999px;
+
+  /* Elevation */
+  --pw-shadow-100: 0 1px 2px rgb(var(--pw-neutral-1000) / 0.06);
+  --pw-shadow-200: 0 2px 8px rgb(var(--pw-neutral-1000) / 0.10);
+  --pw-shadow-300: 0 8px 24px rgb(var(--pw-neutral-1000) / 0.14);
+  --pw-shadow-400: 0 16px 40px rgb(var(--pw-neutral-1000) / 0.20);
+  --pw-shadow-500: 0 24px 60px rgb(var(--pw-neutral-1000) / 0.28);
+  --pw-shadow-600: 0 40px 90px rgb(var(--pw-neutral-1000) / 0.36);
+
+  /* Blur + stroke */
+  --pw-blur-glass: 18px;
+  --pw-blur-layer: 8px;
+  --pw-stroke-border: 1px;
+  --pw-stroke-focus: 3px;
+
+  /* Typography families */
+  --pw-font-display: "Space Grotesk", system-ui, sans-serif;
+  --pw-font-serif: "Cormorant Garamond", serif;
+  --pw-font-body: "Inter", system-ui, sans-serif;
+  --pw-font-mono: "JetBrains Mono", monospace;
+
+  /* Weights */
+  --pw-weight-regular: 400;
+  --pw-weight-medium: 500;
+  --pw-weight-semibold: 600;
+  --pw-weight-bold: 700;
+}
+
+/* ============================================================
+   TIER 2 — SEMANTIC ROLES (light defaults)
+   ============================================================ */
+:root {
+  --pw-bg-page: var(--pw-neutral-50);
+  --pw-bg-surface: var(--pw-neutral-0);
+  --pw-bg-surface-raised: var(--pw-neutral-0);
+  --pw-bg-deep: var(--pw-neutral-1000);
+  --pw-bg-brand: var(--pw-brand-500);
+  --pw-bg-brand-hover: var(--pw-brand-600);
+  --pw-bg-brand-active: var(--pw-brand-700);
+  --pw-bg-brand-subtle: var(--pw-brand-50);
+  --pw-bg-disabled: var(--pw-neutral-200);
+
+  --pw-text-default: var(--pw-neutral-900);
+  --pw-text-muted: var(--pw-neutral-500);
+  --pw-text-subtle: var(--pw-neutral-400);
+  --pw-text-brand: var(--pw-brand-700);
+  --pw-text-on-brand: var(--pw-neutral-1000);
+  --pw-text-on-deep: var(--pw-neutral-50);
+  --pw-text-disabled: var(--pw-neutral-400);
+
+  --pw-border-default: var(--pw-neutral-200);
+  --pw-border-strong: var(--pw-neutral-300);
+  --pw-border-brand: var(--pw-brand-500);
+  --pw-border-focus: var(--pw-brand-500);
+
+  --pw-icon-default: var(--pw-neutral-700);
+  --pw-icon-muted: var(--pw-neutral-400);
+  --pw-icon-brand: var(--pw-brand-700);
+  --pw-icon-on-brand: var(--pw-neutral-1000);
+
+  --pw-focus-ring: var(--pw-brand-500);
+}
+
+/* ============================================================
+   TIER 3 — COMPOSED
+   ============================================================ */
+:root {
+  --pw-glass-bg: rgb(var(--pw-neutral-0) / 0.65);
+  --pw-glass-border: rgb(var(--pw-brand-500) / 0.18);
+  --pw-shadow-cta: 0 12px 34px -10px rgb(var(--pw-brand-500) / 0.5);
+  --pw-gradient-text: linear-gradient(120deg, rgb(var(--pw-brand-500)) 0%, rgb(var(--pw-accent-500)) 100%);
+  --pw-grid-line: rgb(var(--pw-brand-500) / 0.07);
+  --pw-noise-opacity: 0.04;
+}
+
+/* ============================================================
+   DARK MODE — committed for MORANT803
+   ============================================================ */
+[data-theme="dark"] {
+  --pw-bg-page: var(--pw-neutral-1000);
+  --pw-bg-surface: var(--pw-neutral-900);
+  --pw-bg-surface-raised: var(--pw-neutral-800);
+  --pw-bg-deep: var(--pw-neutral-1000);
+  --pw-bg-brand: var(--pw-brand-500);
+  --pw-bg-brand-hover: var(--pw-brand-400);
+  --pw-bg-brand-active: var(--pw-brand-300);
+  --pw-bg-brand-subtle: var(--pw-neutral-800);
+  --pw-bg-disabled: var(--pw-neutral-800);
+
+  --pw-text-default: var(--pw-neutral-50);
+  --pw-text-muted: var(--pw-neutral-300);
+  --pw-text-subtle: var(--pw-neutral-300);
+  --pw-text-brand: var(--pw-brand-400);
+  --pw-text-on-brand: var(--pw-neutral-1000);
+  --pw-text-on-deep: var(--pw-neutral-50);
+  --pw-text-disabled: var(--pw-neutral-500);
+
+  --pw-border-default: var(--pw-neutral-800);
+  --pw-border-strong: var(--pw-neutral-700);
+
+  --pw-icon-default: var(--pw-neutral-200);
+  --pw-icon-muted: var(--pw-neutral-500);
+  --pw-icon-brand: var(--pw-brand-400);
+
+  --pw-glass-bg: rgb(var(--pw-neutral-900) / 0.72);
+  --pw-glass-border: rgb(var(--pw-brand-500) / 0.20);
+  --pw-shadow-100: 0 1px 2px rgb(0 0 0 / 0.40);
+  --pw-shadow-200: 0 2px 10px rgb(0 0 0 / 0.45);
+  --pw-shadow-300: 0 10px 30px rgb(0 0 0 / 0.50);
+  --pw-shadow-400: 0 18px 48px rgb(0 0 0 / 0.55);
+  --pw-shadow-500: 0 28px 70px rgb(0 0 0 / 0.60);
+  --pw-shadow-600: 0 44px 100px rgb(0 0 0 / 0.66);
+  --pw-grid-line: rgb(var(--pw-brand-500) / 0.08);
+  --pw-noise-opacity: 0.05;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
