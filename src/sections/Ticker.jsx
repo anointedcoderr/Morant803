@@ -4,7 +4,7 @@ const moves = ['+1.2', '+0.6', '-0.9', '+2.1', '+0.4', '-0.3', '+1.7', '+0.8']
 
 export default function Ticker() {
   const items = FIGHTS.map((f, i) => ({
-    name: f.a.last,
+    name: f.a.name,
     prob: f.probA,
     move: moves[i % moves.length],
   }))

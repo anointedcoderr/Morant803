@@ -29,8 +29,8 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:px-10 lg:grid-cols-[1.6fr_1fr_1fr_1fr] lg:px-16">
         <div>
           <Logo size="lg" />
-          <p className="mt-4 max-w-xs font-serif text-lg italic leading-snug text-on-deep/70">
-            A live boxing prediction market where the crowd sets the odds and the winners get paid in seconds.
+          <p className="mt-4 max-w-xs font-serif text-xl italic leading-snug text-on-deep/70">
+            Don't Just Watch. Bet It Up.
           </p>
           <div className="mt-5 inline-flex items-center gap-2">
             <span className="relative flex h-2 w-2">

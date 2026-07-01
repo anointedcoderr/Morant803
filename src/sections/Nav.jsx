@@ -27,7 +27,7 @@ export default function Nav() {
     <>
       <header className={`fixed left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl -translate-x-1/2 transition-[top] duration-300 ${scrolled ? 'top-4' : 'top-4 sm:top-[3rem]'}`}>
         <div className={`flex items-center gap-4 rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 ${scrolled ? 'glass shadow-300' : 'border border-transparent'}`}>
-          <a href="#top" aria-label="MORANT803 home"><Logo /></a>
+          <a href="#top" aria-label="Bet It Up home"><Logo /></a>
 
           <nav className="ml-3 hidden items-center gap-1 lg:flex" aria-label="Primary">
             {NAV.map((l) => (

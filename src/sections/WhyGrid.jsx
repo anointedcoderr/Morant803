@@ -5,7 +5,7 @@ export default function WhyGrid() {
   return (
     <section id="why" className="scroll-mt-24 bg-deep py-24 sm:py-32">
       <Container>
-        <SectionHeader eyebrow="Why MORANT803" title="Built to feel fair, fast, and yours" sub="Everything a modern prediction platform should be, and nothing that gets in your way." />
+        <SectionHeader eyebrow="Why Bet It Up" title="Built to feel fair, fast, and yours" sub="Everything a modern prediction platform should be, and nothing that gets in your way." />
         <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-3">
           {WHY.map((w) => (
             <div key={w.title} className="group bg-deep p-7 transition-colors hover:bg-white/[0.03] sm:p-8">

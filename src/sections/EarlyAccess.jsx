@@ -5,7 +5,7 @@ import { SITE } from '../lib/content.js'
 
 const PERKS = [
   { Icon: Ticket, title: 'First pick on opening prices', body: 'Get in before the crowd moves the line on launch night.' },
-  { Icon: Star, title: 'Front-row seat to Fight Night 01', body: 'Early members shape the card before it goes public.' },
+  { Icon: Star, title: 'Front-row seat to the Aug 1 card', body: 'Early members shape the card before it goes public.' },
   { Icon: Crown, title: 'Founding-member perks', body: 'Reduced fees and priority support once we go live.' },
 ]
 
@@ -54,7 +54,7 @@ export default function EarlyAccess() {
                 <div className="flex h-full min-h-[320px] flex-col items-center justify-center rounded-2xl border border-accent/30 bg-surface-raised p-10 text-center">
                   <span className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-accent/40 bg-accent/10 text-accent"><Check className="h-8 w-8" strokeWidth={2.5} /></span>
                   <h3 className="font-display text-2xl font-bold text-default">You are on the list</h3>
-                  <p className="mt-2 max-w-xs text-sm text-muted">We will reach out with your early-access invite before Fight Night 01. Save your spot in the corner.</p>
+                  <p className="mt-2 max-w-xs text-sm text-muted">We will reach out with your early-access invite before the August 1 card. Save your spot in the corner.</p>
                 </div>
               ) : (
                 <form onSubmit={onSubmit} className="rounded-2xl border border-default bg-surface-raised p-6 sm:p-8">
@@ -66,7 +66,7 @@ export default function EarlyAccess() {
                     <Field label="Phone (optional)" id="ea-phone" type="tel" placeholder="(555) 000-0000" autoComplete="tel" />
                   </div>
                   <div className="mt-4">
-                    <Field label="Who are you backing on the card?" id="ea-msg" textarea placeholder="Marquez by decision, and I like Kelly to stop Nkosi early." />
+                    <Field label="Who are you backing on the card?" id="ea-msg" textarea placeholder="Cashy by decision, and I got Day Day to finish early." />
                   </div>
                   <Button type="submit" className="mt-6 w-full" size="lg" disabled={state === 'sending'} aria-busy={state === 'sending'}>
                     {state === 'sending' ? <><Loader2 className="h-4 w-4 animate-spin" /> Joining...</> : 'Join the early-access list'}

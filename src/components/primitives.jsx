@@ -108,21 +108,16 @@ export function CountUp({ end, prefix = '', suffix = '', decimals = 0, duration 
   return <span ref={ref} className="tnum">{prefix}{formatted}{suffix}</span>
 }
 
-/* Logo lockup */
-export function Logo({ className = '', wordmark = true, size = 'md' }) {
-  const badge = size === 'lg' ? 'h-10 w-10' : 'h-9 w-9'
-  const text = size === 'lg' ? 'text-2xl' : 'text-lg sm:text-xl'
+/* Logo lockup — the real Bet It Up mark */
+export function Logo({ className = '', size = 'md' }) {
+  const h = size === 'lg' ? 'h-14' : size === 'sm' ? 'h-8' : 'h-10'
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <span className={`relative flex ${badge} flex-none items-center justify-center rounded-xl bg-brand`}>
-        <Zap className="h-5 w-5 text-on-brand" strokeWidth={2.6} aria-hidden="true" />
-        <span className="absolute inset-0 rounded-xl ring-1 ring-brand/40" aria-hidden="true" />
-      </span>
-      {wordmark && (
-        <span className={`font-display font-bold tracking-tight ${text} text-default`}>
-          MORANT<span className="text-brand">803</span>
-        </span>
-      )}
-    </span>
+    <img
+      src="/betitup-logo.png"
+      alt="Bet It Up"
+      draggable="false"
+      className={`${h} w-auto select-none ${className}`}
+      style={{ filter: 'drop-shadow(0 2px 10px rgba(198,255,61,0.28))' }}
+    />
   )
 }

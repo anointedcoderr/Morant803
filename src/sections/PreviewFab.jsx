@@ -8,7 +8,7 @@ export default function PreviewFab() {
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
       </span>
-      <span className="hidden sm:inline">Preview for Morant803 · request changes</span>
+      <span className="hidden sm:inline">Preview for Bet It Up · request changes</span>
       <span className="sm:hidden">Preview</span>
     </a>
   )

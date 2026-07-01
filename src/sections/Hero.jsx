@@ -40,7 +40,7 @@ function Countdown() {
   const t = useCountdown(SITE.event.countdownISO)
   const cells = [['Days', t.d], ['Hrs', t.h], ['Min', t.m], ['Sec', t.s]]
   return (
-    <div className="mt-4 flex gap-2" aria-label="Time to main event">
+    <div className="mt-4 flex gap-2" aria-label="Time to the main card">
       {cells.map(([label, v]) => (
         <div key={label} className="min-w-[3.4rem] flex-1 rounded-xl border border-default bg-deep py-2 text-center">
           <div className="tnum font-mono text-xl font-bold leading-none text-brand">{v}</div>
@@ -55,7 +55,7 @@ export default function Hero() {
   const ref = useRef(null)
   const openLock = useLock()
   const [probA, setProbA] = useState(F.probA)
-  const [pool, setPool] = useState(128400)
+  const [pool, setPool] = useState(96400)
 
   useEffect(() => {
     return withMotion(() => {
@@ -69,7 +69,7 @@ export default function Hero() {
   useEffect(() => {
     if (prefersReducedMotion()) return
     const id = setInterval(() => {
-      setProbA((p) => Math.max(53, Math.min(61, p + Math.round((Math.random() - 0.5) * 3))))
+      setProbA((p) => Math.max(50, Math.min(59, p + Math.round((Math.random() - 0.5) * 3))))
       setPool((v) => v + Math.round(Math.random() * 900))
     }, 3200)
     return () => clearInterval(id)
@@ -93,12 +93,15 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-6 sm:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-16">
         {/* Left */}
         <div>
-          <div className="hero-rise"><Eyebrow>{SITE.heroEyebrow}</Eyebrow></div>
-          <h1 className="mt-5 font-display text-5xl font-bold tracking-tighter text-white sm:text-7xl lg:text-8xl">
+          <img src="/betitup-logo.png" alt="Bet It Up" className="hero-rise h-16 w-auto sm:h-20" style={{ filter: 'drop-shadow(0 6px 22px rgba(198,255,61,0.3))' }} />
+          <div className="hero-rise mt-6"><Eyebrow>{SITE.heroEyebrow} · Aug 1 on NowThatsTV</Eyebrow></div>
+          <h1 className="mt-4 font-display text-5xl font-bold tracking-tighter text-white sm:text-7xl lg:text-8xl">
             <span className="hero-line-1 block">{SITE.taglineLine1}</span>
             <span className="hero-line-2 block font-serif italic font-medium text-brand">{SITE.taglineLine2}</span>
           </h1>
-          <p className="hero-rise mt-6 max-w-xl text-base leading-relaxed text-on-deep/75 sm:text-lg">{SITE.heroSub}</p>
+          <p className="hero-rise mt-6 max-w-xl text-base leading-relaxed text-on-deep/75 sm:text-lg">
+            <span className="font-semibold text-brand">{SITE.kicker}</span> {SITE.heroSub}
+          </p>
 
           <div className="hero-rise mt-8 flex flex-wrap gap-3">
             <Button icon onClick={() => openLock('Early access')}>Get early access</Button>
@@ -121,34 +124,34 @@ export default function Hero() {
         <div className="hero-card">
           <div className="overflow-hidden rounded-3xl border border-strong bg-surface-raised shadow-600">
             <div className="flex items-center justify-between border-b border-default px-5 py-4">
-              <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-warning">Main event · Jul 31</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-warning">Main event · Aug 1</span>
               <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.05em] text-accent">
                 <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" /><span className="relative inline-flex h-2 w-2 rounded-full bg-accent" /></span>
                 Live market
               </span>
             </div>
             <div className="p-5">
-              <p className="mb-4 font-display text-[15px] font-semibold text-muted">Super Lightweight Title. Who takes the belt?</p>
+              <p className="mb-4 font-display text-[15px] font-semibold text-muted">Main event. Who ya got?</p>
               <div className="mb-5 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
                 <div className="flex flex-col items-center gap-2 text-center">
                   <FighterAvatar corner="red" initials={F.a.initials} />
-                  <div><div className="font-display text-sm font-semibold text-default">{F.a.first[0]}. {F.a.last}</div><div className="tnum font-mono text-[11px] text-subtle">{F.a.record} · {F.a.ko}</div></div>
+                  <div className="font-display text-base font-semibold text-default">{F.a.name}</div>
                 </div>
                 <span className="font-display text-xs font-bold text-subtle">VS</span>
                 <div className="flex flex-col items-center gap-2 text-center">
                   <FighterAvatar corner="blue" initials={F.b.initials} />
-                  <div><div className="font-display text-sm font-semibold text-default">{F.b.first[0]}. {F.b.last}</div><div className="tnum font-mono text-[11px] text-subtle">{F.b.record} · {F.b.ko}</div></div>
+                  <div className="font-display text-base font-semibold text-default">{F.b.name}</div>
                 </div>
               </div>
 
-              <div className="relative flex h-11 overflow-hidden rounded-xl border border-strong" role="img" aria-label={`Market: ${F.a.last} ${probA} percent, ${F.b.last} ${probB} percent`}>
+              <div className="relative flex h-11 overflow-hidden rounded-xl border border-strong" role="img" aria-label={`Market: ${F.a.name} ${probA} percent, ${F.b.name} ${probB} percent`}>
                 <div className="flex items-center px-3 font-mono text-[15px] font-bold text-[#ffd9dd] transition-[width] duration-500 bg-[linear-gradient(90deg,rgba(226,59,74,0.34),rgba(226,59,74,0.16))]" style={{ width: `${probA}%` }}>{probA}%</div>
                 <div className="ml-auto flex items-center justify-end px-3 font-mono text-[15px] font-bold text-[#d8e6ff] transition-[width] duration-500 bg-[linear-gradient(90deg,rgba(61,120,224,0.16),rgba(61,120,224,0.34))]" style={{ width: `${probB}%` }}>{probB}%</div>
                 <span className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-deep" />
               </div>
 
               <div className="mt-4 flex items-center justify-between border-t border-default pt-4">
-                {[['Pool', `$${pool.toLocaleString('en-US')}`], ['24h volume', `$${F.vol}`], ['Traders', '2,183']].map(([k, v]) => (
+                {[['Pool', `$${pool.toLocaleString('en-US')}`], ['24h volume', `$${F.vol}`], ['Traders', '1,974']].map(([k, v]) => (
                   <div key={k} className="flex flex-col gap-0.5">
                     <span className="font-mono text-[11px] uppercase tracking-[0.05em] text-muted">{k}</span>
                     <span className="tnum font-mono text-[15px] text-default">{v}</span>
@@ -157,8 +160,8 @@ export default function Hero() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2.5">
-                <Button size="sm" className="w-full" onClick={() => openLock(`${F.a.last} market`)}>Back {F.a.last}</Button>
-                <Button size="sm" variant="ghost" className="w-full" onClick={() => openLock(`${F.b.last} market`)}>Back {F.b.last}</Button>
+                <Button size="sm" className="w-full" onClick={() => openLock(`${F.a.name} market`)}>Back {F.a.name}</Button>
+                <Button size="sm" variant="ghost" className="w-full" onClick={() => openLock(`${F.b.name} market`)}>Back {F.b.name}</Button>
               </div>
 
               <Countdown />

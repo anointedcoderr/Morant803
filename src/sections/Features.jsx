@@ -25,8 +25,8 @@ function OddsShuffler() {
     <div className="relative h-44">
       {cards.map((f, i) => (
         <div key={i} className="absolute inset-x-0 top-2 mx-auto w-[92%] rounded-2xl border border-strong bg-deep p-4 transition-all duration-700 ease-out" style={styleFor(i)}>
-          <div className="mb-3 flex items-center justify-between font-mono text-[11px] text-subtle"><span>{f.weight}</span><span className="text-accent">live</span></div>
-          <div className="mb-2 flex justify-between font-display text-sm font-semibold text-on-deep"><span>{f.a.last}</span><span>{f.b.last}</span></div>
+          <div className="mb-3 flex items-center justify-between font-mono text-[11px] text-subtle"><span>{f.tag}</span><span className="text-accent">live</span></div>
+          <div className="mb-2 flex justify-between font-display text-sm font-semibold text-on-deep"><span>{f.a.name}</span><span>{f.b.name}</span></div>
           <div className="flex h-2 overflow-hidden rounded-full bg-black/40">
             <div className="bg-[linear-gradient(90deg,#e23b4a,#ff7480)]" style={{ width: `${f.probA}%` }} />
             <div className="ml-auto bg-[linear-gradient(90deg,#3d78e0,#8fbcff)]" style={{ width: `${100 - f.probA}%` }} />
@@ -104,13 +104,13 @@ function PredictCursor() {
   const confirmed = step >= 3
   return (
     <div className="relative h-44 overflow-hidden rounded-2xl border border-strong bg-deep p-4">
-      <div className="mb-3 flex items-center justify-between font-mono text-[11px] text-subtle"><span>Kelly vs Nkosi</span><span className="text-accent">71% / 29%</span></div>
+      <div className="mb-3 flex items-center justify-between font-mono text-[11px] text-subtle"><span>Cashy vs Dee</span><span className="text-accent">54% / 46%</span></div>
       <div className="grid grid-cols-2 gap-2.5">
-        <div className={`rounded-xl border px-3 py-2.5 text-center font-display text-sm font-semibold transition ${pressed || confirmed ? 'border-brand bg-brand/10 text-brand' : 'border-strong text-on-deep'}`}>Back Kelly</div>
-        <div className="rounded-xl border border-strong px-3 py-2.5 text-center font-display text-sm font-semibold text-on-deep/60">Back Nkosi</div>
+        <div className={`rounded-xl border px-3 py-2.5 text-center font-display text-sm font-semibold transition ${pressed || confirmed ? 'border-brand bg-brand/10 text-brand' : 'border-strong text-on-deep'}`}>Back Cashy</div>
+        <div className="rounded-xl border border-strong px-3 py-2.5 text-center font-display text-sm font-semibold text-on-deep/60">Back Dee</div>
       </div>
       <div className={`mt-3 rounded-xl border px-3 py-2.5 text-center font-mono text-[12px] transition-all duration-300 ${confirmed ? 'border-accent/40 bg-accent/10 text-accent opacity-100' : 'border-transparent opacity-0'}`}>
-        <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5" strokeWidth={3} /> Position locked · $25 on Kelly</span>
+        <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5" strokeWidth={3} /> Position locked · $25 on Cashy</span>
       </div>
       {/* cursor */}
       <span className="pointer-events-none absolute transition-all duration-500 ease-out" style={{ left: step >= 1 ? '26%' : '62%', top: step >= 1 ? '86px' : '120px', transform: pressed ? 'scale(0.85)' : 'scale(1)' }}>
@@ -139,7 +139,7 @@ export default function Features() {
         <SectionHeader
           eyebrow="Why it feels different"
           title="A market you can read at a glance"
-          sub="Three things make MORANT803 click: prices that move, results you can trust, and a bet you can place in one tap."
+          sub="Three things make Bet It Up click: prices that move, results you can trust, and a bet you can place in one tap."
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {FEATURES.map((f) => {
