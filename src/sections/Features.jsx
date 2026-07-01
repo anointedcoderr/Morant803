@@ -1,9 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useState } from 'react'
 import { Check, MousePointer2 } from 'lucide-react'
 import { Container, SectionHeader } from '../components/primitives.jsx'
-import { withMotion, prefersReducedMotion } from '../lib/motion.js'
+import { prefersReducedMotion } from '../lib/motion.js'
 import { FEATURES, FIGHTS } from '../lib/content.js'
 
 /* ---------- 3a. Odds shuffler ---------- */
@@ -123,18 +121,8 @@ function PredictCursor() {
 const DEMOS = { shuffler: OddsShuffler, signature: MarketPulse, cursor: PredictCursor }
 
 export default function Features() {
-  const ref = useRef(null)
-  useEffect(() => {
-    return withMotion(() => {
-      gsap.from('.feature-card', {
-        scrollTrigger: { trigger: ref.current, start: 'top 78%', once: true },
-        y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
-      })
-    }, ['.feature-card'], ref.current)
-  }, [])
-
   return (
-    <section ref={ref} className="py-24 sm:py-32">
+    <section className="py-24 sm:py-32">
       <Container>
         <SectionHeader
           eyebrow="Why it feels different"
@@ -142,10 +130,10 @@ export default function Features() {
           sub="Three things make Bet It Up click: prices that move, results you can trust, and a bet you can place in one tap."
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {FEATURES.map((f) => {
+          {FEATURES.map((f, idx) => {
             const Demo = DEMOS[f.demo]
             return (
-              <div key={f.title} className="feature-card rounded-3xl border border-default bg-surface p-6 sm:p-7">
+              <div key={f.title} className="rise-in rounded-3xl border border-default bg-surface p-6 sm:p-7" style={{ animationDelay: `${idx * 90}ms` }}>
                 <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-brand">{f.eyebrow}</p>
                 <h3 className="mt-2 font-display text-xl font-bold tracking-tight text-default">{f.title}</h3>
                 <div className="mt-5" aria-hidden="true"><Demo /></div>

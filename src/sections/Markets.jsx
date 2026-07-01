@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { Container, SectionHeader, FighterAvatar, Button } from '../components/primitives.jsx'
 import { useLock } from '../components/lock.jsx'
-import { withMotion, prefersReducedMotion } from '../lib/motion.js'
+import { prefersReducedMotion } from '../lib/motion.js'
 import { SITE, FIGHTS } from '../lib/content.js'
 
 const FILTERS = ['All fights', 'Main card', "Men's", "Women's"]
@@ -15,19 +13,9 @@ function poolFor(probA, vol) {
 }
 
 export default function Markets() {
-  const ref = useRef(null)
   const openLock = useLock()
   const [filter, setFilter] = useState('All fights')
   const [probs, setProbs] = useState(FIGHTS.map((f) => f.probA))
-
-  useEffect(() => {
-    return withMotion(() => {
-      gsap.from('.market-card', {
-        scrollTrigger: { trigger: ref.current, start: 'top 78%', once: true },
-        y: 40, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out',
-      })
-    }, ['.market-card'], ref.current)
-  }, [])
 
   useEffect(() => {
     if (prefersReducedMotion()) return
@@ -50,7 +38,7 @@ export default function Markets() {
   })
 
   return (
-    <section ref={ref} id="markets" className="scroll-mt-24 py-24 sm:py-32">
+    <section id="markets" className="scroll-mt-24 py-24 sm:py-32">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeader
@@ -73,12 +61,12 @@ export default function Markets() {
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {visibleIdx.map((i) => {
+          {visibleIdx.map((i, pos) => {
             const f = FIGHTS[i]
             const pa = probs[i]
             const pb = 100 - pa
             return (
-              <article key={i} className="market-card group relative overflow-hidden rounded-2xl border border-default bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-strong hover:shadow-300">
+              <article key={i} className="rise-in group relative overflow-hidden rounded-2xl border border-default bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-strong hover:shadow-300" style={{ animationDelay: `${Math.min(pos, 6) * 60}ms` }}>
                 <div className="mb-4 flex items-center justify-between">
                   <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-subtle">{f.tag}</span>
                   {(f.tier === 'Main event' || f.tier === 'Co-main')
