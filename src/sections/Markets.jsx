@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import { Container, SectionHeader, FighterAvatar, Button } from '../components/primitives.jsx'
-import { useLock } from '../components/lock.jsx'
 import { prefersReducedMotion } from '../lib/motion.js'
 import { SITE, FIGHTS } from '../lib/content.js'
 
@@ -13,7 +13,7 @@ function poolFor(probA, vol) {
 }
 
 export default function Markets() {
-  const openLock = useLock()
+  const navigate = useNavigate()
   const [filter, setFilter] = useState('All fights')
   const [probs, setProbs] = useState(FIGHTS.map((f) => f.probA))
 
@@ -94,7 +94,7 @@ export default function Markets() {
 
                 <div className="mt-4 flex items-center justify-between border-t border-default pt-4">
                   <span className="tnum font-mono text-[12px] text-subtle">Pool <b className="text-muted">{poolFor(f.probA, f.vol)}</b> · Vol <b className="text-muted">${f.vol}</b></span>
-                  <button onClick={() => openLock(`${f.a.name} vs ${f.b.name}`)} className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-default bg-surface px-3.5 py-2.5 text-sm font-semibold text-default transition hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
+                  <button onClick={() => navigate('/app')} className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-default bg-surface px-3.5 py-2.5 text-sm font-semibold text-default transition hover:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
                     Trade <ArrowUpRight className="h-4 w-4" strokeWidth={2.4} />
                   </button>
                 </div>
@@ -104,7 +104,7 @@ export default function Markets() {
         </div>
 
         <div className="mt-10 text-center">
-          <Button variant="ghost" icon onClick={() => openLock('All markets')}>Open the full market book</Button>
+          <Button variant="ghost" icon onClick={() => navigate('/app')}>Open the full market book</Button>
         </div>
       </Container>
     </section>

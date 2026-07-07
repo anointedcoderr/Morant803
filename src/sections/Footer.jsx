@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom'
 import { Globe, Mail, MessageCircle, Send, CalendarDays } from 'lucide-react'
 import { Logo } from '../components/primitives.jsx'
 import { useLock } from '../components/lock.jsx'
 import { FOOTER_COLUMNS, CREDIT, SITE } from '../lib/content.js'
 
 function FootLink({ link, openLock }) {
+  if (link.route) {
+    return <Link to={link.route} className="block py-1.5 text-sm text-muted transition-colors hover:text-brand">{link.label}</Link>
+  }
   if (link.href) {
     return <a href={link.href} className="block py-1.5 text-sm text-muted transition-colors hover:text-brand">{link.label}</a>
   }
@@ -64,7 +68,7 @@ export default function Footer() {
                 key={key}
                 href={href}
                 {...(ext ? { target: '_blank', rel: 'noopener' } : {})}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/12 bg-white/[0.04] px-3.5 py-2.5 text-[13px] font-medium text-on-deep/80 transition hover:-translate-y-0.5 hover:border-brand hover:text-on-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/[.12] bg-white/[0.04] px-3.5 py-2.5 text-[13px] font-medium text-on-deep/80 transition hover:-translate-y-0.5 hover:border-brand hover:text-on-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
               >
                 <Icon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                 {label}

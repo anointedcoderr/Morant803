@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { Logo, Button } from '../components/primitives.jsx'
-import { useLock } from '../components/lock.jsx'
 import { NAV } from '../lib/content.js'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const openLock = useLock()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -38,10 +38,10 @@ export default function Nav() {
           </nav>
 
           <div className="ml-auto hidden items-center gap-2 lg:flex">
-            <button onClick={() => openLock('Log in')} className="lift-on-hover rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-default focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
+            <button onClick={() => navigate('/login')} className="lift-on-hover rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-default focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
               Log in
             </button>
-            <Button size="sm" icon onClick={() => openLock('Early access')}>Get early access</Button>
+            <Button size="sm" icon onClick={() => navigate('/app')}>Enter the app</Button>
           </div>
 
           <button onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open} className="ml-auto flex h-11 w-11 items-center justify-center rounded-xl border border-strong bg-surface text-default lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
@@ -66,8 +66,8 @@ export default function Nav() {
             </a>
           ))}
           <div className="mt-auto flex flex-col gap-2.5">
-            <Button variant="ghost" className="w-full" onClick={() => { setOpen(false); openLock('Log in') }}>Log in</Button>
-            <Button className="w-full" onClick={() => { setOpen(false); openLock('Early access') }}>Get early access</Button>
+            <Button variant="ghost" className="w-full" onClick={() => { setOpen(false); navigate('/login') }}>Log in</Button>
+            <Button className="w-full" onClick={() => { setOpen(false); navigate('/app') }}>Enter the app</Button>
           </div>
         </div>
       </div>

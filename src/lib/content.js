@@ -116,22 +116,22 @@ export const FAQ = [
 
 export const FOOTER_COLUMNS = [
   { title: 'Platform', links: [
-    { label: 'Markets', href: '#markets' },
+    { label: 'Trade the card', route: '/app' },
     { label: 'How it works', href: '#how' },
-    { label: 'Leaderboard', lock: 'Leaderboard' },
-    { label: 'Wallet', lock: 'Wallet' },
+    { label: 'Leaderboard', route: '/leaderboard' },
+    { label: 'Wallet', route: '/wallet' },
   ] },
   { title: 'Account', links: [
-    { label: 'Log in', lock: 'Log in' },
-    { label: 'Get early access', lock: 'Early access' },
-    { label: 'Responsible play', lock: 'Responsible play' },
+    { label: 'Log in', route: '/login' },
+    { label: 'Create account', route: '/signup' },
+    { label: 'Responsible play', route: '/responsible' },
     { label: 'Help center', lock: 'Help center' },
   ] },
   { title: 'Company', links: [
     { label: 'About', href: '#why' },
     { label: 'FAQ', href: '#faq' },
-    { label: 'Terms', lock: 'Terms' },
-    { label: 'Privacy', lock: 'Privacy' },
+    { label: 'Terms', route: '/terms' },
+    { label: 'Privacy', route: '/privacy' },
   ] },
 ]
 

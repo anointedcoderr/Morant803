@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { CreditCard, Landmark, Play } from 'lucide-react'
 import { Button, FighterAvatar, Eyebrow } from '../components/primitives.jsx'
-import { useLock } from '../components/lock.jsx'
 import { withMotion, prefersReducedMotion } from '../lib/motion.js'
 import { SITE, FIGHTS, IMAGES } from '../lib/content.js'
 
@@ -53,7 +53,7 @@ function Countdown() {
 
 export default function Hero() {
   const ref = useRef(null)
-  const openLock = useLock()
+  const navigate = useNavigate()
   const [probA, setProbA] = useState(F.probA)
   const [pool, setPool] = useState(96400)
 
@@ -104,7 +104,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-rise mt-8 flex flex-wrap gap-3">
-            <Button icon onClick={() => openLock('Early access')}>Get early access</Button>
+            <Button icon onClick={() => navigate('/signup')}>Create your account</Button>
             <Button as="a" href="#markets" variant="secondary">
               <Play className="h-4 w-4" strokeWidth={2.4} aria-hidden="true" /> See the fight card
             </Button>
@@ -113,9 +113,9 @@ export default function Hero() {
           <div className="hero-rise mt-8 flex flex-wrap items-center gap-4">
             <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-on-deep/60">Fund with</span>
             <div className="flex flex-wrap gap-2">
-              <span className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/12 bg-white/[0.04] px-3 text-[13px] font-semibold text-on-deep/80"><AppleGlyph className="h-4 w-4" /> Apple Pay</span>
-              <span className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/12 bg-white/[0.04] px-3 text-[13px] font-semibold text-on-deep/80"><Landmark className="h-4 w-4" strokeWidth={2} /> Zelle</span>
-              <span className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/12 bg-white/[0.04] px-3 text-[13px] font-semibold text-on-deep/80"><CreditCard className="h-4 w-4" strokeWidth={2} /> Cards</span>
+              <span className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/[.12] bg-white/[0.04] px-3 text-[13px] font-semibold text-on-deep/80"><AppleGlyph className="h-4 w-4" /> Apple Pay</span>
+              <span className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/[.12] bg-white/[0.04] px-3 text-[13px] font-semibold text-on-deep/80"><Landmark className="h-4 w-4" strokeWidth={2} /> Zelle</span>
+              <span className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/[.12] bg-white/[0.04] px-3 text-[13px] font-semibold text-on-deep/80"><CreditCard className="h-4 w-4" strokeWidth={2} /> Cards</span>
             </div>
           </div>
         </div>
@@ -160,8 +160,8 @@ export default function Hero() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2.5">
-                <Button size="sm" className="w-full" onClick={() => openLock(`${F.a.name} market`)}>Back {F.a.name}</Button>
-                <Button size="sm" variant="ghost" className="w-full" onClick={() => openLock(`${F.b.name} market`)}>Back {F.b.name}</Button>
+                <Button size="sm" className="w-full" onClick={() => navigate('/app')}>Back {F.a.name}</Button>
+                <Button size="sm" variant="ghost" className="w-full" onClick={() => navigate('/app')}>Back {F.b.name}</Button>
               </div>
 
               <Countdown />
